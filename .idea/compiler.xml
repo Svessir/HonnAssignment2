@@ -22,11 +22,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="Assignment2" />
+        <module name="RuTube" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="Assignment2" target="1.5" />
+      <module name="RuTube" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>
