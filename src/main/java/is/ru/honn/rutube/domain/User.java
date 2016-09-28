@@ -44,4 +44,6 @@ public class User {
     public void setVideos(List<Video> videos){
         this.videos = videos;
     }
+
+    public int getUserId(){ return this.userId;}
 }
