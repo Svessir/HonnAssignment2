@@ -9,6 +9,7 @@
 
 package is.ru.honn.rutube.service;
 
+import is.ru.honn.rutube.domain.User;
 import is.ru.honn.rutube.domain.Video;
 
 import java.util.ArrayList;
@@ -26,16 +27,23 @@ public class VideoServiceStub implements VideoService {
 
     @Override
     public Video getVideo(int videoId) {
+        for(Video vd : videoCollection){
+            if(vd.getVideoId() == videoId){
+                return vd;
+            }
+        }
         return null;
     }
 
     @Override
     public List<Video> getVideosbyUser(int userId) {
+
         return null;
     }
 
     @Override
     public int addVideo(Video video, int userId) throws ServiceException {
-        return 0;
+        videoCollection.add(video);
+        return userId;
     }
 }

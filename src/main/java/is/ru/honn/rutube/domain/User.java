@@ -23,13 +23,13 @@ import java.util.List;
 public class User {
 
 
-    int userId;
-    String firstName;
-    String lastName;
-    String email;
-    String displayName;
-    LocalDate birthDate;
-    List<Video> videos;
+    private int userId;
+    private String firstName;
+    private String lastName;
+    private String email;
+    private String displayName;
+    private LocalDate birthDate;
+    private List<Video> videos;
 
     public User(int userId, String firstName, String lastName, String email, String displayName, String birthDate) {
         this.userId = userId;
@@ -45,5 +45,31 @@ public class User {
         this.videos = videos;
     }
 
-    public int getUserId(){ return this.userId;}
+    public int getUserId() {
+        return userId;
+    }
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getDisplayName() {
+        return displayName;
+    }
+
+    public LocalDate getBirthDate() {
+        return birthDate;
+    }
+
+    public List<Video> getVideos() {
+        return videos;
+    }
+
 }
