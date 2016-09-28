@@ -32,8 +32,8 @@ public class ReaderFactory {
     public Reader getReader(String readerName) throws FactoryException {
         try
         {
-            ApplicationContext context = new FileSystemXmlApplicationContext("classpath:service.xml");
-            Reader reader = (Reader) context.getBean("userService");
+            ApplicationContext context = new FileSystemXmlApplicationContext("classpath:reader.xml");
+            Reader reader = (Reader) context.getBean(readerName);
             return reader;
         }
         catch (BeansException bex) {
