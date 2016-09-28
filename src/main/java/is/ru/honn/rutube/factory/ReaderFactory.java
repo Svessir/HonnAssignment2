@@ -23,6 +23,7 @@ import org.springframework.context.support.FileSystemXmlApplicationContext;
 public class ReaderFactory {
 
     /**
+     * Gets reader identified by a name
      *
      * @param readerName identification name of the reader being retrieved.
      * @return Reader object that identifies to the readerName.
