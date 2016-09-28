@@ -3,6 +3,10 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="userService" class="is.ru.honn.rutube.service.UserServiceStub"/>
-    <bean id="videoService" class="is.ru.honn.rutube.service.VideoServiceStub"/>
+        <bean id="userService" class="is.ru.honn.rutube.service.UserServiceStub">
+
+        </bean>
+        <bean id="videoService" class="is.ru.honn.rutube.service.VideoServiceStub">
+
+        </bean>
 </beans>
