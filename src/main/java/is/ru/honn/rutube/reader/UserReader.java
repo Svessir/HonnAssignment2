@@ -28,6 +28,9 @@ public class UserReader extends AbstractReader {
 
     private VideoReader videoReader;
 
+    public UserReader() {
+    }
+
     @Autowired
     public UserReader(VideoReader videoReader){
         this.videoReader = videoReader;
