@@ -7,8 +7,10 @@
  *
  **************************************************************************************************/
 
-package is.ru.honn.rutube.service;
+package is.ru.honn.rutube.factory;
 
+import is.ru.honn.rutube.service.UserService;
+import is.ru.honn.rutube.service.VideoService;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
@@ -30,8 +32,8 @@ public class ServiceFactory {
 
         try
         {
-            //userService = (UserService) context.getBean("userService");
-            //videoService = (VideoService) context.getBean("videoService");
+            userService = (UserService) context.getBean("userService");
+            videoService = (VideoService) context.getBean("videoService");
         }
         catch (BeansException bex) {
             bex.printStackTrace();

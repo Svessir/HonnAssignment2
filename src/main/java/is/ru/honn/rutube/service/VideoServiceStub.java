@@ -10,6 +10,7 @@
 package is.ru.honn.rutube.service;
 import is.ru.honn.rutube.domain.User;
 import is.ru.honn.rutube.domain.Video;
+import is.ru.honn.rutube.factory.ServiceFactory;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -57,7 +58,7 @@ public class VideoServiceStub implements VideoService {
             ServiceFactory serviceFactory = new ServiceFactory();
             userService = serviceFactory.getUserService();
         }
-        
+
         for(User user : userService.getUsers()) {
             if(user.getUserId() == userId)
                 return user.getVideos();
