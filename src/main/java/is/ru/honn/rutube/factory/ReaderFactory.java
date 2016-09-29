@@ -11,7 +11,6 @@ package is.ru.honn.rutube.factory;
 
 import is.ru.honn.rutube.reader.Reader;
 import org.springframework.beans.BeansException;
-import org.springframework.cglib.proxy.Factory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
@@ -46,6 +45,6 @@ public class ReaderFactory {
 
     public static void main(String[] args) {
         ReaderFactory factory = new ReaderFactory();
-        factory.getReader("userReader");
+        factory.getReader("videoReader");
     }
 }

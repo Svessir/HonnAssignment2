@@ -24,14 +24,26 @@ public abstract class AbstractReader implements Reader{
 
     @Override
     public Object read() {
-        return null;
+        ClientRequest request = new ClientRequest();
+        String unParsedData = request.getRequest(URI);
+        return parse(unParsedData);
     }
 
+    /**
+     * Set the Uniform Resource Identifier for this reader.
+     *
+     * @param URI The Uniform Resource Identifier
+     */
     @Override
     public void setURI(String URI) {
         this.URI = URI;
     }
 
+    /**
+     * Set callback handler for the data being read.
+     *
+     * @param readHandler The object that will handle the
+     */
     @Override
     public void setReadHandler(ReadHandler readHandler) {
         this.readHandler = readHandler;
