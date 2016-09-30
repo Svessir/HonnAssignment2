@@ -28,7 +28,6 @@ public class UserReader extends AbstractReader {
     private VideoReader videoReader;
 
     public UserReader(VideoReader videoReader){
-        System.out.println("Inside UserReader constructor");
         this.videoReader = videoReader;
     }
 

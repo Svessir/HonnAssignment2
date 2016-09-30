@@ -88,5 +88,6 @@ public class UserImportProcess extends RuAbstractProcess implements ReadHandler 
      */
     @Override
     public void read(int count, Object object) {
+        reader.parse(object.toString());
     }
 }

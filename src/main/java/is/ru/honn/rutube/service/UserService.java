@@ -21,5 +21,6 @@ import java.util.List;
  */
 public interface UserService {
     int addUser(User user) throws ServiceException;
+    User getUser(int userId);
     List<User> getUsers();
 }

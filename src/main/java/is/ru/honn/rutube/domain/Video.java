@@ -18,7 +18,7 @@ import java.util.List;
  * @author Sverrir
  * @version 1.0, 21 sep. 2016
  */
-public class Video {
+public class Video implements Comparable<Video>{
 
     private int videoId;
     private String title;
@@ -78,5 +78,16 @@ public class Video {
 
     public void setVideoType(String videoType) {
         this.videoType = videoType;
+    }
+
+    @Override
+    public int compareTo(Video o) {
+        if(this.videoId != o.videoId){return -1;}
+        if(this.title != o.title){return -1;}
+        if(this.description != o.description){return -1;}
+        if(this.source != o.source){return -1;}
+        if(this.videoId != o.videoId){return -1;}
+        if(this.tags != o.tags){return -1;}
+        return 0;
     }
 }

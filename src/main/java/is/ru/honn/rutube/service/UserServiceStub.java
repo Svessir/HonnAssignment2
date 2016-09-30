@@ -32,6 +32,16 @@ public class UserServiceStub implements UserService {
     }
 
     @Override
+    public User getUser(int userId) {
+        for(User us : userCollection){
+            if(us.getUserId() == userId){
+                return us;
+            }
+        }
+        return null;
+    }
+
+    @Override
     public List<User> getUsers() {
         return (List<User>) userCollection;
     }
