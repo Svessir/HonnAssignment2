@@ -25,7 +25,7 @@ import java.util.List;
  */
 public class VideoReader extends AbstractReader {
 
-    public VideoReader(){}
+    public VideoReader(){System.out.println("Inside videoReader constructor." );}
 
 
     /**

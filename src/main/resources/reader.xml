@@ -4,5 +4,9 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="videoReader" class="is.ru.honn.rutube.reader.VideoReader"/>
-    <bean id="userReader" class="is.ru.honn.rutube.reader.UserReader"/>
+
+    <bean id="userReader" class="is.ru.honn.rutube.reader.UserReader">
+        <constructor-arg ref="videoReader"/>
+    </bean>
+
 </beans>

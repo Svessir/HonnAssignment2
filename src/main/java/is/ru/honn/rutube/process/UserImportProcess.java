@@ -48,7 +48,7 @@ public class UserImportProcess extends RuAbstractProcess implements ReadHandler 
         ReaderFactory readerFactory = new ReaderFactory();
 
         userService = serviceFactory.getUserService();
-        readerFactory.getReader("userReader");
+        reader = readerFactory.getReader("userReader");
 
         /*
         Configure the reader such that it will read from the resource and use this process

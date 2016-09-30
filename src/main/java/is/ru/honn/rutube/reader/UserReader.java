@@ -14,7 +14,6 @@ import is.ru.honn.rutube.domain.Video;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,14 +27,10 @@ public class UserReader extends AbstractReader {
 
     private VideoReader videoReader;
 
-    public UserReader() {
-    }
-
-    @Autowired
     public UserReader(VideoReader videoReader){
+        System.out.println("Inside UserReader constructor");
         this.videoReader = videoReader;
     }
-
 
     /**
      *
@@ -45,7 +40,6 @@ public class UserReader extends AbstractReader {
      * @return Object which is a list of users.
      */
     public Object parse(String content) {
-
         //root object
         JSONObject jsonObject = (JSONObject) JSONValue.parse(content);
 
