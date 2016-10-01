@@ -31,6 +31,15 @@ public class User {
     private LocalDate birthDate;
     private List<Video> videos;
 
+    /**
+     *
+     * @param userId            The unique id of the user.
+     * @param firstName         The first name of the user.
+     * @param lastName          The last name of the user.
+     * @param email             The email address of the user.
+     * @param displayName       The RuTube front end display name of the user.
+     * @param birthDate         The date of birth of the user in the format "YYYY-MM-DD".
+     */
     public User(int userId, String firstName, String lastName, String email, String displayName, String birthDate) {
         this.userId = userId;
         this.firstName = firstName;
@@ -41,36 +50,71 @@ public class User {
         videos = new ArrayList<>();
 
     }
-    public void setVideos(List<Video> videos){
-        this.videos = videos;
-    }
 
+    /**
+     *
+     * @return The id of the user
+     */
     public int getUserId() {
         return userId;
     }
 
+
+    /**
+     *
+     * @return The first name of the user
+     */
     public String getFirstName() {
         return firstName;
     }
 
+    /**
+     *
+     * @return The last name of the user
+     */
     public String getLastName() {
         return lastName;
     }
 
+    /**
+     *
+     * @return The email address of this user
+     */
     public String getEmail() {
         return email;
     }
 
+    /**
+     *
+     * @return The RuTube display name of this user
+     */
     public String getDisplayName() {
         return displayName;
     }
 
+    /**
+     *
+     * @return This user's date of birth
+     */
     public LocalDate getBirthDate() {
         return birthDate;
     }
 
+    /**
+     *
+     * @return List of all videos owned by this user.
+     */
     public List<Video> getVideos() {
         return videos;
+    }
+
+    /**
+     * Adds a video to the list of videos owned by this user.
+     *
+     * @param videos The video being assigned authorship of this user.
+     */
+    public void setVideos(List<Video> videos){
+        this.videos = videos;
     }
 
     /**
@@ -88,9 +132,8 @@ public class User {
     }
 
     /**
-     * Returns a string representation of the user.
      *
-     * @return String representation of the user.
+     * @return String containing this user's first name and last name
      */
     @Override
     public String toString(){

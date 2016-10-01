@@ -10,7 +10,6 @@
 package is.ru.honn.rutube.service;
 
 import is.ru.honn.rutube.domain.User;
-import is.ru.honn.rutube.observer.Observer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,13 +20,13 @@ import java.util.List;
  * @author Kári
  * @version 1.0, 21 sep. 2016
  */
-public class UserServiceStub implements UserService {
+public class UserServiceStub extends AbstractUserService {
 
     ArrayList<User> userCollection = new ArrayList<User>();
-    ArrayList<Observer> observers = new ArrayList<Observer>();
 
     /**
-     *
+     * Adds a user to the service if the service does not
+     * yet maintain the user.
      *
      * @param user The user being added to the service
      * @return The Id of the user being added
@@ -37,6 +36,7 @@ public class UserServiceStub implements UserService {
     public int addUser(User user) throws ServiceException {
         userInsertCheck(user);
         userCollection.add(user);
+        notifyObservers();
         return user.getUserId();
     }
 
@@ -67,29 +67,6 @@ public class UserServiceStub implements UserService {
     }
 
     /**
-     * Registers observer to the service. If the observer is already registered
-     * to the service then this method does nothing.
-     *
-     * @param observer The observer that wants to register to the service's observer pool
-     */
-    @Override
-    public void registerObserver(Observer observer) {
-        if(!observers.contains(observer))
-            observers.add(observer);
-    }
-
-    /**
-     * Unregisters an observer from the service. If the observer is not already registered
-     * to the service then this method does nothing.
-     *
-     * @param observer The observer that wants to unregister from the service's observer pool
-     */
-    @Override
-    public void unregisterObserver(Observer observer) {
-        observers.remove(observer);
-    }
-
-    /**
      * Checks whether a user can be added to the service.
      *
      * @param user The user being added.
@@ -104,13 +81,5 @@ public class UserServiceStub implements UserService {
                 throw new ServiceException("Could not add user to userService, duplicate add.");
             }
         }
-    }
-
-    /**
-     * Notifies all observers of changes relevant to observers.
-     */
-    private void notifyObservers() {
-        for(Observer observer : observers)
-            observer.notifyObserver();
     }
 }

@@ -29,6 +29,11 @@ public class ClientRequest
     {
     }
 
+    /**
+     *
+     * @param url The url of the request resource
+     * @return The data retrieved from the resource as a String
+     */
     public String getRequest(String url)
     {
         Client client = ClientBuilder.newClient();
@@ -40,6 +45,11 @@ public class ClientRequest
         return result;
     }
 
+    /**
+     *
+     * @param fileName The name of the file that contains the request data
+     * @return The data retrieved from the file as a String
+     */
     public String getFileContent(String fileName) throws ReaderException
     {
         StringBuilder content = new StringBuilder();
