@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Stub component for a user service
+ * Stub implementation for a user service
  *
  * @author Kári
  * @version 1.0, 21 sep. 2016

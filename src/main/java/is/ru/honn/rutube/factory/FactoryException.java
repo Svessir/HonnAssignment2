@@ -17,10 +17,7 @@ package is.ru.honn.rutube.factory;
  */
 public class FactoryException extends RuntimeException {
 
-    public FactoryException()
-    {
-        super();
-    }
+    public FactoryException(){super();}
 
     public FactoryException(String message)
     {

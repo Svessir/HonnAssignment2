@@ -41,11 +41,21 @@ public class ServiceFactory {
 
     }
 
+    /**
+     * Gets the UserService for RuTube
+     *
+     * @return RuTube's UserService.
+     */
     public UserService getUserService() {
 
         return userService;
     }
 
+    /**
+     * Gets the VideoService for RuTube
+     *
+     * @return RuTube's VideoService.
+     */
     public VideoService getVideoService() {
         return videoService;
     }

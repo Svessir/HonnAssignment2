@@ -16,7 +16,7 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * Stub component for a video service
+ * Stub implementation for a video service
  *
  * @author Kári
  * @version 1.0, 21 sep. 2016
