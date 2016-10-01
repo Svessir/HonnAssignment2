@@ -13,7 +13,6 @@ import is.ru.honn.rutube.domain.User;
 import is.ru.honn.rutube.observer.Observer;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 /**
@@ -24,10 +23,19 @@ import java.util.List;
  */
 public class UserServiceStub implements UserService {
 
-    Collection<User> userCollection = new ArrayList<User>();
+    ArrayList<User> userCollection = new ArrayList<User>();
+    ArrayList<Observer> observers = new ArrayList<Observer>();
 
+    /**
+     *
+     *
+     * @param user The user being added to the service
+     * @return The Id of the user being added
+     * @throws ServiceException On duplicate add or null
+     */
     @Override
     public int addUser(User user) throws ServiceException {
+        userInsertCheck(user);
         userCollection.add(user);
         return user.getUserId();
     }
@@ -44,16 +52,33 @@ public class UserServiceStub implements UserService {
 
     @Override
     public List<User> getUsers() {
-        return (List<User>) userCollection;
+        return new ArrayList<>(userCollection);
     }
 
     @Override
     public void registerObserver(Observer observer) {
-
+        if(!observers.contains(observer))
+            observers.add(observer);
     }
 
     @Override
     public void unregisterObserver(Observer observer) {
+        observers.remove(observer);
+    }
 
+    private void userInsertCheck(User user) throws ServiceException{
+        if(user == null){
+            throw new ServiceException("Could not add user to userService. Null cannot be added.");
+        }
+        for(User us : userCollection){
+            if(us.equals(user)){
+                throw new ServiceException("Could not add user to userService, duplicate add.");
+            }
+        }
+    }
+
+    private void notifyObservers() {
+        for(Observer observer : observers)
+            observer.notifyObserver();
     }
 }

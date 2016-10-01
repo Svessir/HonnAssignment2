@@ -72,4 +72,23 @@ public class User {
         return videos;
     }
 
+    /**
+     * Checks if Object o is this user by comparing their IDs.
+     *
+     * @param o The objects being tested for equality.
+     * @return True if object is equal to this user, else false.
+     */
+    @Override
+    public boolean equals(Object o) {
+        if(!(o instanceof User))
+            return false;
+        User u = (User) o;
+        return userId != u.userId ? false : true;
+    }
+
+    @Override
+    public String toString(){
+        return firstName + " " + lastName;
+    }
+
 }

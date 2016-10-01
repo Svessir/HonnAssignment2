@@ -65,6 +65,9 @@ public class UserReader extends AbstractReader {
             List<Video> videos = (List<Video>) jvids;
             user.setVideos(videos);
 
+            if(readHandler != null)
+                readHandler.read(1, user);
+
             users.add(user);
         });
 
@@ -78,6 +81,9 @@ public class UserReader extends AbstractReader {
         ClientRequest clientRequest = new ClientRequest();
         String content = clientRequest.getRequest("http://mockaroo.com/f13b8200/download?count=1&key=e79a3650");
         List<User> users = (List<User>)userReader.parse(content);
+        for(User us : users){
+            System.out.println(us);
+        }
 
     }
 

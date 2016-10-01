@@ -18,7 +18,7 @@ import java.util.List;
  * @author Sverrir
  * @version 1.0, 21 sep. 2016
  */
-public class Video implements Comparable<Video>{
+public class Video{
 
     private int videoId;
     private String title;
@@ -80,14 +80,21 @@ public class Video implements Comparable<Video>{
         this.videoType = videoType;
     }
 
+    /**
+     * Checks if Object o is this video by comparing their IDs.
+     *
+     * @param o The objects being tested for equality.
+     * @return True if object is equal to this video, else false.
+     */
     @Override
-    public int compareTo(Video o) {
-        if(this.videoId != o.videoId){return -1;}
-        if(this.title != o.title){return -1;}
-        if(this.description != o.description){return -1;}
-        if(this.source != o.source){return -1;}
-        if(this.videoId != o.videoId){return -1;}
-        if(this.tags != o.tags){return -1;}
-        return 0;
+    public boolean equals(Object o) {
+        if(!(o instanceof Video))
+            return false;
+        Video v = (Video) o;
+        return videoId != v.videoId ? false : true;
+    }
+
+    public String toString(){
+        return title + " : " + videoType;
     }
 }

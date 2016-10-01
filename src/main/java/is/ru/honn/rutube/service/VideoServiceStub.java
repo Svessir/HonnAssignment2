@@ -11,9 +11,6 @@ package is.ru.honn.rutube.service;
 import is.ru.honn.rutube.domain.User;
 import is.ru.honn.rutube.domain.Video;
 import is.ru.honn.rutube.factory.ServiceFactory;
-import sun.awt.CausedFocusEvent;
-
-import java.security.Provider;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -78,19 +75,28 @@ public class VideoServiceStub implements VideoService {
         userServiceCheck();
         User user = userService.getUser(userId);
         if(user != null) {
-            /*if(!videoCollection.contains(video)){
-                throw new ServiceException("Could not add video to videoService");
-            }*/
+            videoInsertCheck(video);
             videoCollection.add(video);
             return userId;
         }
         return 0;
     }
 
-    private void userServiceCheck(){
+    private void userServiceCheck() {
         if(userService == null) {
             ServiceFactory serviceFactory = new ServiceFactory();
             userService = serviceFactory.getUserService();
+        }
+    }
+
+    private void videoInsertCheck(Video video) throws ServiceException{
+        if(video ==  null){
+            throw new ServiceException("Could not add user to videoService. Null cannot be added.");
+        }
+        for(Video vs : videoCollection){
+            if(vs.equals(video)) {
+                throw new ServiceException("Could not add video to videoService, duplicate add");
+            }
         }
     }
 }
