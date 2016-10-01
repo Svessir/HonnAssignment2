@@ -10,6 +10,7 @@
 package is.ru.honn.rutube.service;
 
 import is.ru.honn.rutube.domain.User;
+import is.ru.honn.rutube.observer.Observer;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -44,5 +45,15 @@ public class UserServiceStub implements UserService {
     @Override
     public List<User> getUsers() {
         return (List<User>) userCollection;
+    }
+
+    @Override
+    public void registerObserver(Observer observer) {
+
+    }
+
+    @Override
+    public void unregisterObserver(Observer observer) {
+
     }
 }
