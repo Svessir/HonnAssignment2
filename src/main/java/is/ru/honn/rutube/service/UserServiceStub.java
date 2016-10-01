@@ -25,7 +25,8 @@ public class UserServiceStub extends AbstractUserService {
     ArrayList<User> userCollection = new ArrayList<User>();
 
     /**
-     *
+     * Adds a user to the service if the service does not
+     * yet maintain the user.
      *
      * @param user The user being added to the service
      * @return The Id of the user being added
@@ -35,6 +36,7 @@ public class UserServiceStub extends AbstractUserService {
     public int addUser(User user) throws ServiceException {
         userInsertCheck(user);
         userCollection.add(user);
+        notifyObservers();
         return user.getUserId();
     }
 
