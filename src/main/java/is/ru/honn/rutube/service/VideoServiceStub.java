@@ -82,6 +82,10 @@ public class VideoServiceStub implements VideoService {
         return 0;
     }
 
+    /**
+     * Checks if a userService has been initialized.
+     * If not the method will initialize a userService.
+     */
     private void userServiceCheck() {
         if(userService == null) {
             ServiceFactory serviceFactory = new ServiceFactory();
@@ -89,6 +93,12 @@ public class VideoServiceStub implements VideoService {
         }
     }
 
+    /**
+     * Checks whether a video can be added to the service.
+     *
+     * @param video The video being added.
+     * @throws ServiceException If video cannot be added to the service.
+     */
     private void videoInsertCheck(Video video) throws ServiceException{
         if(video ==  null){
             throw new ServiceException("Could not add user to videoService. Null cannot be added.");
