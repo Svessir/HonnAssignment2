@@ -34,10 +34,15 @@ public class ClientRequest
      * @param url The url of the request resource
      * @return The data retrieved from the resource as a String
      */
-    public String getRequest(String url)
+    public String getRequest(String url) throws ReaderException
     {
         Client client = ClientBuilder.newClient();
         Response response = client.target(url).request().get();
+
+        // Throw exception if status code is not 2xx
+        if(!Integer.toString(response.getStatus()).matches("2.."))
+            throw new ReaderException("Could not read resource: " +
+                    response.getStatus() + " " + response.getStatusInfo());
 
         String result = response.readEntity(String.class);
         client.close();

@@ -23,10 +23,16 @@ import org.springframework.context.support.FileSystemXmlApplicationContext;
  */
 public class ServiceFactory {
 
-    private UserService userService;
-    private VideoService videoService;
+    private static UserService userService;
+    private static VideoService videoService;
 
-    public ServiceFactory() {
+    private static ServiceFactory instance = new ServiceFactory();
+
+    public static ServiceFactory getInstance() {
+        return instance;
+    }
+
+    private ServiceFactory() {
 
         ApplicationContext context = new FileSystemXmlApplicationContext("classpath:service.xml");
 
@@ -58,11 +64,5 @@ public class ServiceFactory {
      */
     public VideoService getVideoService() {
         return videoService;
-    }
-
-    public static void main(String[] args) {
-        ServiceFactory factory = new ServiceFactory();
-        UserService us = factory.getUserService();
-        VideoService vs = factory.getVideoService();
     }
 }

@@ -49,7 +49,7 @@ public class VideoServiceStub implements VideoService {
      * Gets all videos authored by a user
      *
      * @param userId The id of the user who's videos are being retrieved.
-     * @return All videos authered by a user.
+     * @return All videos authored by a user.
      */
     @Override
     public List<Video> getVideosbyUser(int userId) {
@@ -88,8 +88,7 @@ public class VideoServiceStub implements VideoService {
      */
     private void userServiceCheck() {
         if(userService == null) {
-            ServiceFactory serviceFactory = new ServiceFactory();
-            userService = serviceFactory.getUserService();
+            userService = ServiceFactory.getInstance().getUserService();
         }
     }
 

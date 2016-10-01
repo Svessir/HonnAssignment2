@@ -45,10 +45,9 @@ public class UserImportProcess extends RuAbstractProcess implements ReadHandler 
         ApplicationContext appContext = new FileSystemXmlApplicationContext("classpath:app.xml");
         msg = (MessageSource) appContext.getBean("messageSource");
 
-        ServiceFactory serviceFactory = new ServiceFactory();
         ReaderFactory readerFactory = new ReaderFactory();
 
-        userService = serviceFactory.getUserService();
+        userService = ServiceFactory.getInstance().getUserService();
         reader = readerFactory.getReader("userReader");
 
         /*

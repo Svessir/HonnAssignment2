@@ -15,7 +15,7 @@ package is.ru.honn.rutube.reader;
  * @author Sverrir
  * @version 1.0, 25 sep. 2016
  */
-public class ReaderException extends Exception
+public class ReaderException extends RuntimeException
 {
     public ReaderException()
     {
