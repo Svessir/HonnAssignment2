@@ -94,6 +94,11 @@ public class Video{
         return videoId != v.videoId ? false : true;
     }
 
+    /**
+     * Returns a string representation of the video.
+     *
+     * @return String representation of the video.
+     */
     public String toString(){
         return title + " : " + videoType;
     }

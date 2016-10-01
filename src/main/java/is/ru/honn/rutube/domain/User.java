@@ -48,6 +48,7 @@ public class User {
     public int getUserId() {
         return userId;
     }
+
     public String getFirstName() {
         return firstName;
     }
@@ -86,6 +87,11 @@ public class User {
         return userId != u.userId ? false : true;
     }
 
+    /**
+     * Returns a string representation of the user.
+     *
+     * @return String representation of the user.
+     */
     @Override
     public String toString(){
         return firstName + " " + lastName;
