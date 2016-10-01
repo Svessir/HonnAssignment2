@@ -36,48 +36,55 @@ public class Video{
         this.tags = tags;
     }
 
+    /**
+     * Adds a new tag to this video. If the tag already exists
+     * then this method does nothing.
+     *
+     * @param tag The tag being added to this video.
+     */
     public void addTag(String tag){
-        tags.add(tag);
+        if(!tags.contains(tag))
+            tags.add(tag);
     }
 
+    /**
+     *
+     * @return This video's unique id.
+     */
     public int getVideoId() {
         return videoId;
     }
 
-    public void setVideoId(int videoId) {
-        this.videoId = videoId;
-    }
-
+    /**
+     *
+     * @return This video's title.
+     */
     public String getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
+    /**
+     *
+     * @return This video's description.
+     */
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
+    /**
+     *
+     * @return This video's source.
+     */
     public String getSource() {
         return source;
     }
 
-    public void setSource(String source) {
-        this.source = source;
-    }
-
+    /**
+     *
+     * @return This video's type
+     */
     public String getVideoType() {
         return videoType;
-    }
-
-    public void setVideoType(String videoType) {
-        this.videoType = videoType;
     }
 
     /**
@@ -94,7 +101,11 @@ public class Video{
         return videoId != v.videoId ? false : true;
     }
 
+    /**
+     *
+     * @return String containing this video type and title.
+     */
     public String toString(){
-        return title + " : " + videoType;
+        return videoType + " : " + title;
     }
 }
