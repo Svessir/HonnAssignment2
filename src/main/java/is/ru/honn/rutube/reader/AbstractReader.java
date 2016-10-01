@@ -11,22 +11,36 @@ package is.ru.honn.rutube.reader;
 
 import org.json.simple.JSONObject;
 
+import java.util.Collection;
+
 /**
  * Supertype for a RuTube reader
  *
  * @author Sverrir
  * @version 1.0, 25 sep. 2016
  */
-public abstract class AbstractReader implements Reader{
+public abstract class AbstractReader implements Reader {
 
     protected ReadHandler readHandler;
     protected String URI;
 
+    /**
+     * Reads data from resource and parses it.
+     * If a read handler has been set then it is
+     * invoked with the parsed data.
+     * If the parsed data is a collection then
+     * the items within that collection are sent
+     * to the read handler else the object itself.
+     *
+     * @return The parsed from the resource
+     */
     @Override
     public Object read() {
         ClientRequest request = new ClientRequest();
         String unParsedData = request.getRequest(URI);
-        return parse(unParsedData);
+        Object parsed = parse(unParsedData);
+        handleParsedObject(parsed);
+        return parsed;
     }
 
     /**
@@ -63,5 +77,34 @@ public abstract class AbstractReader implements Reader{
         if(value == null)
             return 0;
         return value.intValue();
+    }
+
+    /**
+     * Invokes the read handler on the parsed data.
+     * If the parsed data is a collection then the
+     * items within that collection are sent to the
+     * read handler else the object itself.
+     * If no read handler has been set then this
+     * method does nothing.
+     *
+     * @param parsed Parsed object by the reader
+     */
+    protected void handleParsedObject(Object parsed) {
+
+        if(readHandler == null)
+            return;
+
+        if(parsed instanceof Collection) {
+            Collection<Object> collection = ((Collection) parsed);
+
+            int i = 0;
+            for(Object record : collection) {
+                readHandler.read(i, record);
+                i++;
+            }
+        }
+        else
+            readHandler.read(0, parsed);
+
     }
 }

@@ -96,7 +96,7 @@ public class UserImportProcess extends RuAbstractProcess implements ReadHandler 
             return;
 
         User user = (User) object;
-        System.out.println(user.getFirstName());
+        System.out.println(user);
         userService.addUser(user);
     }
 }

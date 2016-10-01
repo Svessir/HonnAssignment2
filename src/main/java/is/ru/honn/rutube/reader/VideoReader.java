@@ -52,8 +52,6 @@ public class VideoReader extends AbstractReader {
                     (String) jVid.get("type"),
                     (List<String>) jVid.get("tags")
             );
-            if(readHandler != null)
-                readHandler.read(1, video);
 
             videos.add(video);
         });

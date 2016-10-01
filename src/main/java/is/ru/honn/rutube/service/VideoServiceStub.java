@@ -105,7 +105,7 @@ public class VideoServiceStub implements VideoService {
         }
         for(Video vs : videoCollection){
             if(vs.equals(video)) {
-                throw new ServiceException("Could not add video to videoService, duplicate add");
+                throw new ServiceException("Could not add video to videoService, duplicate add.");
             }
         }
     }

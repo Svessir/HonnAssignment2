@@ -65,9 +65,6 @@ public class UserReader extends AbstractReader {
             List<Video> videos = (List<Video>) jvids;
             user.setVideos(videos);
 
-            if(readHandler != null)
-                readHandler.read(1, user);
-
             users.add(user);
         });
 
