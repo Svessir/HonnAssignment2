@@ -74,6 +74,9 @@ public class UserImportProcess extends RuAbstractProcess implements ReadHandler 
         reader.read();
     }
 
+    /**
+     * Log that process has end.
+     */
     @Override
     public void afterProcess() {
         logger.info(msg.getMessage("processend",
