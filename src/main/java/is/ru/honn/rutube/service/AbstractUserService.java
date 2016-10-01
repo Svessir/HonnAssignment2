@@ -51,7 +51,6 @@ public abstract class AbstractUserService implements UserService {
      * Notifies all observers of changes relevant to observers.
      */
     protected void notifyObservers() {
-        for(Observer observer : observers)
-            observer.notifyObserver();
+        observers.forEach(Observer::notifyObserver);
     }
 }

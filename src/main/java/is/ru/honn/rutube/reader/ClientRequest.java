@@ -23,7 +23,7 @@ import java.io.IOException;
  * @author Sverrir
  * @version 1.0, 25 sep. 2016
  */
-public class ClientRequest
+public class ClientRequest implements Request
 {
     public ClientRequest()
     {
@@ -33,6 +33,7 @@ public class ClientRequest
      *
      * @param url The url of the request resource
      * @return The data retrieved from the resource as a String
+     * @throws ReaderException If request fails.
      */
     public String getRequest(String url) throws ReaderException
     {

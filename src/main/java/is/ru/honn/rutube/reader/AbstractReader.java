@@ -11,8 +11,6 @@ package is.ru.honn.rutube.reader;
 
 import org.json.simple.JSONObject;
 
-import java.util.Collection;
-
 /**
  * Supertype for a RuTube reader
  *
@@ -23,24 +21,21 @@ public abstract class AbstractReader implements Reader {
 
     protected ReadHandler readHandler;
     protected String URI;
+    protected Request request;
 
     /**
      * Reads data from resource and parses it.
-     * If a read handler has been set then it is
-     * invoked with the parsed data.
-     * If the parsed data is a collection then
-     * the items within that collection are sent
-     * to the read handler else the object itself.
      *
-     * @return The parsed from the resource
+     * @return The parsed object from the resource
+     * @throws ReaderException If readHandler has not been set or if reading fails.
      */
     @Override
-    public Object read() {
-        ClientRequest request = new ClientRequest();
-        String unParsedData = request.getRequest(URI);
-        Object parsed = parse(unParsedData);
-        handleParsedObject(parsed);
-        return parsed;
+    public Object read() throws ReaderException {
+
+        if(readHandler == null)
+            throw new ReaderException("Read aborted: readHandler not set.");
+
+        return parse(request.getRequest(URI));
     }
 
     /**
@@ -64,6 +59,15 @@ public abstract class AbstractReader implements Reader {
     }
 
     /**
+     * Sets the component that handles request for this reader
+     *
+     * @param request The component that will handle the requests
+     */
+    public void setRequest(Request request) {
+        this.request = request;
+    }
+
+    /**
      *
      * @param jParent Json parent containing an integer field.
      * @param name name of the integer field
@@ -77,34 +81,5 @@ public abstract class AbstractReader implements Reader {
         if(value == null)
             return 0;
         return value.intValue();
-    }
-
-    /**
-     * Invokes the read handler on the parsed data.
-     * If the parsed data is a collection then the
-     * items within that collection are sent to the
-     * read handler else the object itself.
-     * If no read handler has been set then this
-     * method does nothing.
-     *
-     * @param parsed Parsed object by the reader
-     */
-    protected void handleParsedObject(Object parsed) {
-
-        if(readHandler == null)
-            return;
-
-        if(parsed instanceof Collection) {
-            Collection<Object> collection = ((Collection) parsed);
-
-            int i = 0;
-            for(Object record : collection) {
-                readHandler.read(i, record);
-                i++;
-            }
-        }
-        else
-            readHandler.read(0, parsed);
-
     }
 }

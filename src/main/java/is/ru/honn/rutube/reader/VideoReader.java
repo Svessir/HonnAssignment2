@@ -56,6 +56,12 @@ public class VideoReader extends AbstractReader {
             videos.add(video);
         });
 
+        if(readHandler != null) {
+            int i = 0;
+            for(Video video : videos)
+                readHandler.read(i++, video);
+        }
+
         return videos;
     }
 

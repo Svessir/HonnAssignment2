@@ -68,6 +68,12 @@ public class UserReader extends AbstractReader {
             users.add(user);
         });
 
+        if(readHandler != null) {
+            int i = 0;
+            for(User user : users)
+                readHandler.read(i++, user);
+        }
+
         return users;
     }
 
