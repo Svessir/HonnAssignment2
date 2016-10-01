@@ -22,7 +22,7 @@ import java.util.List;
  */
 public class UserServiceStub extends AbstractUserService {
 
-    ArrayList<User> userCollection = new ArrayList<User>();
+    protected ArrayList<User> userCollection = new ArrayList<User>();
 
     /**
      * Adds a user to the service if the service does not
