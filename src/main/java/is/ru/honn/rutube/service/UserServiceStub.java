@@ -27,6 +27,7 @@ public class UserServiceStub implements UserService {
 
     @Override
     public int addUser(User user) throws ServiceException {
+        userInsertCheck(user);
         userCollection.add(user);
         return user.getUserId();
     }
@@ -44,5 +45,16 @@ public class UserServiceStub implements UserService {
     @Override
     public List<User> getUsers() {
         return (List<User>) userCollection;
+    }
+
+    private void userInsertCheck(User user) throws ServiceException{
+        if(user == null){
+            throw new NullPointerException();
+        }
+        for(User us : userCollection){
+            if(us.equals(user)){
+                throw new ServiceException("Could not add user to userService, duplicate add");
+            }
+        }
     }
 }

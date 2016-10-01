@@ -8,6 +8,7 @@
  **************************************************************************************************/
 
 package is.ru.honn.rutube.process;
+import is.ru.honn.rutube.domain.User;
 import is.ru.honn.rutube.factory.ReaderFactory;
 import is.ru.honn.rutube.factory.ServiceFactory;
 import is.ru.honn.rutube.reader.ReadHandler;
@@ -88,6 +89,11 @@ public class UserImportProcess extends RuAbstractProcess implements ReadHandler 
      */
     @Override
     public void read(int count, Object object) {
-        reader.parse(object.toString());
+        if(!(object instanceof User))
+            return;
+
+        User user = (User) object;
+        System.out.println(user.getFirstName());
+        userService.addUser(user);
     }
 }

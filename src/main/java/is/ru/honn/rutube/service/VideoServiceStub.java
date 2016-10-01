@@ -78,9 +78,7 @@ public class VideoServiceStub implements VideoService {
         userServiceCheck();
         User user = userService.getUser(userId);
         if(user != null) {
-            /*if(!videoCollection.contains(video)){
-                throw new ServiceException("Could not add video to videoService");
-            }*/
+            videoInsertCheck(video);
             videoCollection.add(video);
             return userId;
         }
@@ -91,6 +89,17 @@ public class VideoServiceStub implements VideoService {
         if(userService == null) {
             ServiceFactory serviceFactory = new ServiceFactory();
             userService = serviceFactory.getUserService();
+        }
+    }
+
+    private void videoInsertCheck(Video video) throws ServiceException{
+        if(video ==  null){
+            throw new NullPointerException();
+        }
+        for(Video vs : videoCollection){
+            if(vs.equals(video)) {
+                throw new ServiceException("Could not add video to videoService, duplicate add");
+            }
         }
     }
 }
