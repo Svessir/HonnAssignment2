@@ -15,11 +15,12 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Component description
@@ -28,7 +29,8 @@ import java.util.ArrayList;
  * @version 1.0, 02 okt. 2016
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath:user-service.xml")
+@ContextConfiguration("classpath:service-test.xml")
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 public class UserServiceTest {
 
     @Autowired
@@ -66,6 +68,13 @@ public class UserServiceTest {
 
     @Test
     public void getUsersTest(){
-
+        List<User>  userList = new ArrayList<User>();
+        User user1 = new User(1, "Karl", "Pilkington", "karlP@gmail.com", "karlP", "2007-12-03");
+        User user2 = new User(2, "Sver", "Kronjene", "sverK@gmail.com", "sverK", "2007-12-03");
+        userService.addUser(user1);
+        userList.add(user1);
+        userService.addUser(user2);
+        userList.add(user2);
+        Assert.assertEquals(userList, userService.getUsers());
     }
 }
