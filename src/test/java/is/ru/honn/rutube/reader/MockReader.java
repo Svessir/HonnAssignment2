@@ -17,6 +17,8 @@ package is.ru.honn.rutube.reader;
  */
 public class MockReader implements Reader {
 
+    private String parseReturnValue;
+
     @Override
     public Object read() {
         return null;
@@ -24,7 +26,7 @@ public class MockReader implements Reader {
 
     @Override
     public Object parse(String content) {
-        return null;
+        return parseReturnValue;
     }
 
     @Override
@@ -35,5 +37,9 @@ public class MockReader implements Reader {
     @Override
     public void setReadHandler(ReadHandler readHandler) {
 
+    }
+
+    public void setParseReturnValue(String parseReturnValue) {
+        this.parseReturnValue = parseReturnValue;
     }
 }

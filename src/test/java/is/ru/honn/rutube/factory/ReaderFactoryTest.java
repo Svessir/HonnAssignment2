@@ -7,9 +7,10 @@
  *
  **************************************************************************************************/
 
-package is.ru.honn.rutube.reader;
+package is.ru.honn.rutube.factory;
 
 import is.ru.honn.rutube.factory.ReaderFactory;
+import is.ru.honn.rutube.reader.Reader;
 import junit.framework.TestCase;
 import org.junit.Test;
 import org.junit.runner.RunWith;
