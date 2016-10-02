@@ -118,6 +118,15 @@ public class User {
     }
 
     /**
+     * Assigns authorship of this video to user.
+     *
+     * @param video The video being assigned authorship to
+     */
+    public void assignVideoToUser(Video video) {
+        this.videos.add(video);
+    }
+
+    /**
      * Checks if Object o is this user by comparing their IDs.
      *
      * @param o The objects being tested for equality.
