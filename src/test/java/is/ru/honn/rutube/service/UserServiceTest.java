@@ -42,20 +42,30 @@ public class UserServiceTest {
     @Test
     public void addUserTest(){
         User user1 = new User(1, "Karl", "Pilkington", "karlP@gmail.com", "karlP", "2007-12-03");
-        User user2 = new User(2, "Sver", "Kronjene", "sverK@gmail.com", "sverK", "2007-12-03");
-        Assert.assertEquals(new ArrayList<User>(), userService.getUsers());
-        userService.addUser(user1);
-        User newUser = userService.getUser(1);
-        Assert.assertEquals(user1, newUser);
+        try{
+            userService.addUser(user1);
+        }catch (ServiceException sx){
+            Assert.assertEquals("Could not add user to userService, duplicate add.", sx.getMessage());
+        }
+        try{
+            userService.addUser(null);
+        }catch (ServiceException sx) {
+            Assert.assertEquals("Could not add user to userService. Null cannot be added.",sx.getMessage());
+        }
     }
 
-  /*  @Test
+    @Test
     public void getUserTest(){
-
+        User user2 = new User(2, "Sver", "Kronjene", "sverK@gmail.com", "sverK", "2007-12-03");
+        userService.addUser(user2);
+        User newUser = userService.getUser(1);
+        Assert.assertNotEquals(user2, newUser);
+        newUser = userService.getUser(2);
+        Assert.assertEquals(user2, newUser);
     }
 
     @Test
     public void getUsersTest(){
 
-    }*/
+    }
 }

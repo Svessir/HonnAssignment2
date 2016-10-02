@@ -31,6 +31,6 @@ public class ReaderTest extends TestCase {
     private Reader reader;
 
     @Test
-    public void readerTest(){  
+    public void readerTest(){
     }
 }
