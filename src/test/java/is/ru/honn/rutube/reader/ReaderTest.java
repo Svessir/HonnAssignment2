@@ -9,6 +9,8 @@
 
 package is.ru.honn.rutube.reader;
 
+import junit.framework.TestCase;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -23,8 +25,12 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:user-reader-test.xml")
-public class ReaderTest {
+public class ReaderTest extends TestCase {
     @Autowired
     @Qualifier("userReader")
     private Reader reader;
+
+    @Test
+    public void readerTest(){  
+    }
 }
