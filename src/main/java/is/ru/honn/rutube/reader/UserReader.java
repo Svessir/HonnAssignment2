@@ -25,9 +25,9 @@ import java.util.List;
  */
 public class UserReader extends AbstractReader {
 
-    private VideoReader videoReader;
+    private Reader videoReader;
 
-    public UserReader(VideoReader videoReader){
+    public UserReader(Reader videoReader){
         this.videoReader = videoReader;
     }
 
