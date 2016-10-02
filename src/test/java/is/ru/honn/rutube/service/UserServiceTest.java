@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Component description
+ * Tests UserService functionality
  *
  * @author Kári
  * @version 1.0, 02 okt. 2016

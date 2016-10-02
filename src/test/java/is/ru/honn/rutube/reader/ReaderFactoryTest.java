@@ -1,6 +1,6 @@
 /*************************************************************************************************
  *
- * ReaderTest.java - The ReaderTest class.
+ * ReaderFactoryTest.java - The ReaderFactoryTest class.
  *
  * Copyright (c) 2016 Sverrir Magnússon & Kári Eiríksson. 
  * All rights reserved.
@@ -9,6 +9,7 @@
 
 package is.ru.honn.rutube.reader;
 
+import is.ru.honn.rutube.factory.ReaderFactory;
 import junit.framework.TestCase;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,19 +19,23 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
- * Tests Reader functionality
+ * Tests ReaderFactory functionality
  *
  * @author Sverrir
  * @version 1.0, 01 okt. 2016
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath:user-reader-test.xml")
-public class ReaderTest extends TestCase {
+@ContextConfiguration("classpath:reader.xml")
+public class ReaderFactoryTest extends TestCase {
     @Autowired
-    @Qualifier("userReader")
+    @Qualifier("mockReader")
     private Reader reader;
 
     @Test
-    public void readerTest(){
+    public void FactoryReadXmlTest(){
+        // Should retrieve mockReader
+        ReaderFactory readerFactory = new ReaderFactory();
+        Reader factoryReader = readerFactory.getReader("mockReader");
+        assertEquals(reader.getClass(), factoryReader.getClass());
     }
 }
