@@ -9,6 +9,7 @@
 
 package is.ru.honn.rutube.service;
 
+import is.ru.honn.rutube.domain.User;
 import is.ru.honn.rutube.observer.Observer;
 
 import java.util.ArrayList;
@@ -50,7 +51,8 @@ public abstract class AbstractUserService implements UserService {
     /**
      * Notifies all observers of changes relevant to observers.
      */
-    protected void notifyObservers() {
-        observers.forEach(Observer::notifyObserver);
+    protected void notifyObservers(User user) {
+        for(Observer observer : observers)
+            observer.notifyObserver(user);
     }
 }

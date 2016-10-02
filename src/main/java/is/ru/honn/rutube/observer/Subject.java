@@ -9,9 +9,12 @@
 
 package is.ru.honn.rutube.observer;
 
+
 /**
- * API for Subject in an observer pattern
+ * API for Subject in an observer pattern that
+ * notifies observers with an object of class T
  *
+ * @param <T> The class of the object a subject notifies with
  * @author Sverrir
  * @version 1.0, 01 okt. 2016
  */

@@ -36,7 +36,7 @@ public class UserServiceStub extends AbstractUserService {
     public int addUser(User user) throws ServiceException {
         userInsertCheck(user);
         userCollection.add(user);
-        notifyObservers();
+        notifyObservers(user);
         return user.getUserId();
     }
 
