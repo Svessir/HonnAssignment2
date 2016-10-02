@@ -43,7 +43,7 @@ public class ClientRequest implements Request
         // Throw exception if status code is not 2xx
         if(!Integer.toString(response.getStatus()).matches("2.."))
             throw new ReaderException("Could not read resource: " +
-                    response.getStatus() + " " + response.getStatusInfo());
+                    response.getStatus() + " " + response.getStatusInfo() + ".");
 
         String result = response.readEntity(String.class);
         client.close();

@@ -43,7 +43,7 @@ public class UserServiceStub extends AbstractUserService {
     /**
      * Retrieves a single user from the service identified by the userId.
      *
-     * @param userId The id of the user being retreived
+     * @param userId The id of the user being retrieved
      * @return The user identified by the userId else null
      */
     @Override
