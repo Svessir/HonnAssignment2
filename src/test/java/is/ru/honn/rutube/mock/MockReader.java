@@ -7,7 +7,10 @@
  *
  **************************************************************************************************/
 
-package is.ru.honn.rutube.reader;
+package is.ru.honn.rutube.mock;
+
+import is.ru.honn.rutube.reader.ReadHandler;
+import is.ru.honn.rutube.reader.Reader;
 
 /**
  * Component that mocks a reader
