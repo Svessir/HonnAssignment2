@@ -76,6 +76,7 @@ public class VideoServiceStub implements VideoService {
         if(user != null) {
             videoInsertCheck(video);
             videoCollection.add(video);
+            user.assignVideoToUser(video);
             return userId;
         }
         return 0;
