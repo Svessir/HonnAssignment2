@@ -23,7 +23,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.fail;
 
 /**
@@ -47,14 +46,19 @@ public class UserServiceTest {
 
     @Test
     public void addUserTest(){
+        // Adding a user to the userService list.
         User user1 = new User(1, "Karl", "Pilkington", "karlP@gmail.com", "karlP", "2007-12-03");
         userService.addUser(user1);
+
+        // Testing if adding a user that already exists fails.
         try{
             userService.addUser(user1);
             fail();
         }catch (ServiceException sx){
             assertEquals("Could not add user to userService, duplicate add.", sx.getMessage());
         }
+
+        // Testing if adding a null user fails.
         try{
             userService.addUser(null);
             fail();
@@ -65,10 +69,15 @@ public class UserServiceTest {
 
     @Test
     public void getUserTest(){
+        // Adding a user to the userService list.
         User user2 = new User(1, "Sver", "Kronjene", "sverK@gmail.com", "sverK", "2007-12-03");
         userService.addUser(user2);
+
+        // Testing if getting a user that does not exits fails.
         User newUser = userService.getUser(2);
         assertEquals(null, newUser);
+
+        // Testing if getting a user that exists works.
         newUser = userService.getUser(1);
         assertEquals(user2, newUser);
     }
@@ -78,10 +87,14 @@ public class UserServiceTest {
         List<User>  userList = new ArrayList<User>();
         User user1 = new User(1, "Karl", "Pilkington", "karlP@gmail.com", "karlP", "2007-12-03");
         User user2 = new User(2, "Sver", "Kronjene", "sverK@gmail.com", "sverK", "2007-12-03");
+
+        // Adding users to userService list and a temp list.
         userService.addUser(user1);
         userList.add(user1);
         userService.addUser(user2);
         userList.add(user2);
+
+        // Testing if userService list and temp list are the same.
         assertEquals(userList, userService.getUsers());
     }
 }
