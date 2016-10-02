@@ -19,6 +19,9 @@ import is.ru.honn.rutube.reader.Request;
  * @version 1.0, 02 okt. 2016
  */
 public class MockRequest implements Request {
+
+    private String workingURI;
+
     @Override
     public String getRequest(String url) throws ReaderException {
         if(url.equals("http://mockaroo.com/f13b8200/download?count=1&key=e79a3650")) {
@@ -31,5 +34,9 @@ public class MockRequest implements Request {
     @Override
     public String getFileContent(String fileName) throws ReaderException {
         return null;
+    }
+
+    public void setWorkingURI(String workingURI) {
+        this.workingURI = workingURI;
     }
 }

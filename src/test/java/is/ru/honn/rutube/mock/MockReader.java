@@ -20,7 +20,7 @@ import is.ru.honn.rutube.reader.Reader;
  */
 public class MockReader implements Reader {
 
-    private String parseReturnValue;
+    private Object parseReturnValue;
 
     @Override
     public Object read() {
@@ -42,7 +42,7 @@ public class MockReader implements Reader {
 
     }
 
-    public void setParseReturnValue(String parseReturnValue) {
+    public void setParseReturnValue(Object parseReturnValue) {
         this.parseReturnValue = parseReturnValue;
     }
 }
