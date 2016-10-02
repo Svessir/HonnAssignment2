@@ -20,7 +20,7 @@ import java.util.List;
  * @author Sverrir
  * @version 1.0, 21 sep. 2016
  */
-public interface UserService extends Subject {
+public interface UserService extends Subject<User> {
     int addUser(User user) throws ServiceException;
     User getUser(int userId);
     List<User> getUsers();

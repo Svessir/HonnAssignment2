@@ -15,6 +15,6 @@ package is.ru.honn.rutube.observer;
  * @author Sverrir
  * @version 1.0, 01 okt. 2016
  */
-public interface Observer {
-    void notifyObserver();
+public interface Observer<T> {
+    void notifyObserver(T object);
 }
