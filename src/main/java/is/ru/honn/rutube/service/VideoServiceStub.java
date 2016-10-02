@@ -10,7 +10,7 @@
 package is.ru.honn.rutube.service;
 import is.ru.honn.rutube.domain.User;
 import is.ru.honn.rutube.domain.Video;
-import is.ru.honn.rutube.factory.ServiceFactory;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -24,6 +24,7 @@ import java.util.List;
 public class VideoServiceStub implements VideoService {
 
     private UserService userService;
+
     private Collection<Video> videoCollection = new ArrayList<Video>();
 
     public VideoServiceStub() {
@@ -53,7 +54,6 @@ public class VideoServiceStub implements VideoService {
      */
     @Override
     public List<Video> getVideosbyUser(int userId) {
-        userServiceCheck();
         for(User user : userService.getUsers()) {
             if(user.getUserId() == userId)
                 return user.getVideos();
@@ -72,7 +72,6 @@ public class VideoServiceStub implements VideoService {
      */
     @Override
     public int addVideo(Video video, int userId) throws ServiceException {
-        userServiceCheck();
         User user = userService.getUser(userId);
         if(user != null) {
             videoInsertCheck(video);
@@ -83,13 +82,12 @@ public class VideoServiceStub implements VideoService {
     }
 
     /**
-     * Checks if a userService has been initialized.
-     * If not the method will initialize a userService.
+     * Set a user service for this video service
+     *
+     * @param userService The user service being set
      */
-    private void userServiceCheck() {
-        if(userService == null) {
-            userService = ServiceFactory.getInstance().getUserService();
-        }
+    public void setUserService(UserService userService) {
+        this.userService = userService;
     }
 
     /**
@@ -98,7 +96,7 @@ public class VideoServiceStub implements VideoService {
      * @param video The video being added.
      * @throws ServiceException If video cannot be added to the service.
      */
-    private void videoInsertCheck(Video video) throws ServiceException{
+    private void videoInsertCheck(Video video) throws ServiceException {
         if(video ==  null){
             throw new ServiceException("Could not add user to videoService. Null cannot be added.");
         }

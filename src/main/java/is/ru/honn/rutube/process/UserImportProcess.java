@@ -10,7 +10,6 @@
 package is.ru.honn.rutube.process;
 import is.ru.honn.rutube.domain.User;
 import is.ru.honn.rutube.factory.ReaderFactory;
-import is.ru.honn.rutube.factory.ServiceFactory;
 import is.ru.honn.rutube.reader.ReadHandler;
 import is.ru.honn.rutube.reader.Reader;
 import is.ru.honn.rutube.service.UserService;
@@ -47,7 +46,7 @@ public class UserImportProcess extends RuAbstractProcess implements ReadHandler 
 
         ReaderFactory readerFactory = new ReaderFactory();
 
-        userService = ServiceFactory.getInstance().getUserService();
+        userService = (UserService) appContext.getBean("userService");
         reader = readerFactory.getReader("userReader");
 
         /*

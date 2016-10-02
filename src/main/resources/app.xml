@@ -3,6 +3,12 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <bean id="videoService" class="is.ru.honn.rutube.service.VideoServiceStub">
+        <property name="userService" ref="userService"/>
+    </bean>
+
+    <bean id="userService" class="is.ru.honn.rutube.service.UserServiceStub"/>
+
     <bean id="messageSource"
           class="org.springframework.context.support.ResourceBundleMessageSource">
         <property name="basename">
