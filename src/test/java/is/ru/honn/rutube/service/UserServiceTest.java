@@ -27,7 +27,7 @@ import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.fail;
 
 /**
- * Component description
+ * Tests UserService functionality
  *
  * @author Kári
  * @version 1.0, 02 okt. 2016
