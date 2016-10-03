@@ -9,7 +9,6 @@
 
 package is.ru.honn.rutube.reader;
 
-import is.ru.honn.rutube.domain.User;
 import is.ru.honn.rutube.domain.Video;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -63,18 +62,5 @@ public class VideoReader extends AbstractReader {
         }
 
         return videos;
-    }
-
-    public static void main(String args[]){
-
-        VideoReader videoReader = new VideoReader();
-        UserReader userReader = new UserReader(videoReader);
-        ClientRequest clientRequest = new ClientRequest();
-        String content = clientRequest.getRequest("http://mockaroo.com/f13b8200/download?count=1&key=e79a3650");
-        List<User> users = (List<User>)userReader.parse(content);
-        for(User us : users){
-            for(Video vs : us.getVideos())
-                System.out.println(vs);
-        }
     }
 }

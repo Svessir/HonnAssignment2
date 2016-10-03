@@ -21,22 +21,36 @@ import is.ru.honn.rutube.reader.Request;
 public class MockRequest implements Request {
 
     private String workingURI;
+    private String errorMessage;
+    private String parseValue;
 
     @Override
     public String getRequest(String url) throws ReaderException {
-        if(url.equals("http://mockaroo.com/f13b8200/download?count=1&key=e79a3650")) {
-            return "";
-        }
-        else
-            throw new ReaderException("Could not read resource: 404 Not Found.");
+        return mockRequestGetting(url);
     }
 
     @Override
     public String getFileContent(String fileName) throws ReaderException {
-        return null;
+        return mockRequestGetting(fileName);
     }
 
     public void setWorkingURI(String workingURI) {
         this.workingURI = workingURI;
+    }
+
+    public void setErrorMessage(String errorMessage) {
+        this.errorMessage = errorMessage;
+    }
+
+    public void setParseValue(String parseValue) {
+        this.parseValue = parseValue;
+    }
+
+    private String mockRequestGetting(String uri) throws ReaderException {
+        if(uri.equals(workingURI)) {
+            return parseValue;
+        }
+        else
+            throw new ReaderException(errorMessage);
     }
 }

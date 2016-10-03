@@ -7,15 +7,33 @@
         <property name="workingURI">
             <value>http://mockaroo.com/f13b8200/download?count=1&amp;key=e79a3650</value>
         </property>
+        <property name="errorMessage">
+            <value></value>
+        </property>
+        <property name="parseValue">
+            <!--The Request returns a JSON of one user with no videos-->
+            <value>
+                {"status":"OK","recordCount":1,"apiResults":[{"users":[{"userId":1,"firstName":"John","lastName":"Johnson",
+                "email":"i@i.is","displayName":"Jay","birthdate":"1918-05-25","videos":[]}]}]}
+            </value>
+        </property>
+    </bean>
+
+    <!--The mockReader for the videoReader will only return empty list-->
+    <bean id="parseValue" class="java.util.ArrayList">
     </bean>
 
     <bean id="readHandler" class="is.ru.honn.rutube.mock.MockReadHandler"/>
 
     <bean id="videoReader" class="is.ru.honn.rutube.mock.MockReader">
+        <property name="parseReturnValue">
+            <ref bean="parseValue"/>
+        </property>
     </bean>
 
     <bean id="userReader" class="is.ru.honn.rutube.reader.UserReader">
         <constructor-arg ref="videoReader"/>
+        <property name="request" ref="request"/>
     </bean>
 
 </beans>

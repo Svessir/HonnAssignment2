@@ -11,6 +11,9 @@ package is.ru.honn.rutube.reader;
 
 import org.json.simple.JSONObject;
 
+import java.net.URI;
+import java.net.URISyntaxException;
+
 /**
  * Supertype for a RuTube reader
  *
@@ -20,7 +23,7 @@ import org.json.simple.JSONObject;
 public abstract class AbstractReader implements Reader {
 
     protected ReadHandler readHandler;
-    protected String URI;
+    protected String uri;
     protected Request request;
 
     /**
@@ -31,11 +34,10 @@ public abstract class AbstractReader implements Reader {
      */
     @Override
     public Object read() throws ReaderException {
-
         if(readHandler == null)
             throw new ReaderException("Read aborted: readHandler not set.");
 
-        return parse(request.getRequest(URI));
+        return isWebUri() ? parse(request.getRequest(uri)) : parse(request.getFileContent(uri));
     }
 
     /**
@@ -45,7 +47,7 @@ public abstract class AbstractReader implements Reader {
      */
     @Override
     public void setURI(String URI) {
-        this.URI = URI;
+        this.uri = URI;
     }
 
     /**
@@ -81,5 +83,24 @@ public abstract class AbstractReader implements Reader {
         if(value == null)
             return 0;
         return value.intValue();
+    }
+
+    /**
+     * Checks if the uri that is set is a web uri.
+     *
+     * @return True if the uri set is a web uri else false.
+     * @throws URISyntaxException If the URI has invalid syntax.
+     */
+    protected boolean isWebUri() throws ReaderException  {
+        try
+        {
+            URI uriObject = new URI(uri);
+            return "http".equalsIgnoreCase(uriObject.getScheme())
+                    || "https".equalsIgnoreCase(uriObject.getScheme());
+
+        }catch (URISyntaxException | NullPointerException uex)
+        {
+            throw new ReaderException("The URI set for reader is invalid.", uex.getCause());
+        }
     }
 }

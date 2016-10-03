@@ -40,7 +40,7 @@ public class ClientRequest implements Request
         Client client = ClientBuilder.newClient();
         Response response = client.target(url).request().get();
 
-        // Throw exception if status code is not 2xx
+        // Throw exception if status code is not of type 200
         if(!Integer.toString(response.getStatus()).matches("2.."))
             throw new ReaderException("Could not read resource: " +
                     response.getStatus() + " " + response.getStatusInfo() + ".");
