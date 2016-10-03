@@ -27,6 +27,10 @@ public class UserReader extends AbstractReader {
 
     private Reader videoReader;
 
+    /**
+     *
+     * @param videoReader Reader to parse videos
+     */
     public UserReader(Reader videoReader){
         this.videoReader = videoReader;
     }

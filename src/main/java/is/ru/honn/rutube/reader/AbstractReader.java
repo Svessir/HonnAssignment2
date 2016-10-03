@@ -89,7 +89,7 @@ public abstract class AbstractReader implements Reader {
      * Checks if the uri that is set is a web uri.
      *
      * @return True if the uri set is a web uri else false.
-     * @throws URISyntaxException If the URI has invalid syntax.
+     * @throws ReaderException If the URI has invalid syntax.
      */
     protected boolean isWebUri() throws ReaderException  {
         try
