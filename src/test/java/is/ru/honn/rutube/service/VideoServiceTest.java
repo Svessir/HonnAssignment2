@@ -57,12 +57,12 @@ public class VideoServiceTest {
         Video video1 = new Video(1, "Onka Judge", "Onka Judge audition", "https://www.youtube.com/watch?v=qTfVNOXNOSg", "video", new ArrayList<String>());
 
         // Testing if adding a video where user does not exist fails.
-        int ret = videoService.addVideo(video1, 0);
-        assertEquals(0, ret);
+        boolean ret = videoService.addVideo(video1, 0);
+        assertEquals(false, ret);
 
         // Testing if adding a video works.
         ret = videoService.addVideo(video1, 1);
-        assertEquals(1, ret);
+        assertEquals(true, ret);
 
         // Testing if adding a null video fails.
         try{

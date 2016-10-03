@@ -22,5 +22,5 @@ import java.util.List;
 public interface VideoService {
     Video getVideo(int videoId);
     List<Video> getVideosbyUser(int userId);
-    int addVideo(Video video, int userId) throws ServiceException;
+    boolean addVideo(Video video, int userId) throws ServiceException;
 }

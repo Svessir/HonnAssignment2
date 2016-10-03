@@ -67,19 +67,19 @@ public class VideoServiceStub implements VideoService {
      *
      * @param video The video being added
      * @param userId The id of the user who authors the video being added.
-     * @return
+     * @return True if video could be added with given userId else false.
      * @throws ServiceException On duplicate add.
      */
     @Override
-    public int addVideo(Video video, int userId) throws ServiceException {
+    public boolean addVideo(Video video, int userId) throws ServiceException {
         User user = userService.getUser(userId);
         if(user != null) {
             videoInsertCheck(video);
             videoCollection.add(video);
             user.assignVideoToUser(video);
-            return userId;
+            return true;
         }
-        return 0;
+        return false;
     }
 
     /**

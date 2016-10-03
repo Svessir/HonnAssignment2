@@ -29,15 +29,15 @@ public class UserServiceStub extends AbstractUserService {
      * yet maintain the user.
      *
      * @param user The user being added to the service
-     * @return The Id of the user being added
+     * @return True if user could be added else false.
      * @throws ServiceException On duplicate add or null
      */
     @Override
-    public int addUser(User user) throws ServiceException {
+    public boolean addUser(User user) throws ServiceException {
         userInsertCheck(user);
         userCollection.add(user);
         notifyObservers(user);
-        return user.getUserId();
+        return true;
     }
 
     /**

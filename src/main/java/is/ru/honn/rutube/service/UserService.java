@@ -21,7 +21,7 @@ import java.util.List;
  * @version 1.0, 21 sep. 2016
  */
 public interface UserService extends Subject<User> {
-    int addUser(User user) throws ServiceException;
+    boolean addUser(User user) throws ServiceException;
     User getUser(int userId);
     List<User> getUsers();
 }
